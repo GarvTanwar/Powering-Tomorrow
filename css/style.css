@@ -29,6 +29,7 @@ body {
   background: var(--paper);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.65;
+  overflow-x: hidden;
 }
 
 img {
@@ -67,6 +68,11 @@ a {
   color: var(--green-900);
   font-weight: 800;
   text-decoration: none;
+  min-width: 0;
+}
+
+.logo span:last-child {
+  overflow-wrap: anywhere;
 }
 
 .logo-mark {
@@ -250,6 +256,7 @@ h2 {
   color: var(--green-900);
   font-size: clamp(2rem, 4vw, 3.25rem);
   line-height: 1.08;
+  overflow-wrap: anywhere;
 }
 
 .feature-copy p,
@@ -537,6 +544,7 @@ h2 {
   color: var(--green-900);
   font-size: clamp(2.55rem, 7vw, 4.6rem);
   line-height: 1;
+  overflow-wrap: anywhere;
 }
 
 .info-page > p {
@@ -601,16 +609,28 @@ h2 {
   .feature-section,
   .visual-feature {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .age-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .visual-feature .visual-placeholder {
+    order: 2;
+  }
+
+  .visual-feature .feature-copy {
+    order: 1;
   }
 }
 
 @media (max-width: 760px) {
   .navbar {
     min-height: 64px;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    padding: 10px 0;
   }
 
   .menu-toggle {
@@ -638,28 +658,55 @@ h2 {
   .navbar > .nav-links:not(#nav-links) {
     position: static;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px 14px;
-    padding: 0;
+    flex: 1 1 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 6px 0 2px;
     background: transparent;
     border-bottom: 0;
   }
 
   .nav-links a {
+    width: 100%;
     padding: 10px 0;
   }
 
   .hero {
-    min-height: 520px;
+    min-height: 440px;
     align-items: flex-end;
     background:
-      linear-gradient(0deg, rgba(255, 248, 236, 0.98), rgba(255, 248, 236, 0.72)),
+      linear-gradient(0deg, rgba(255, 248, 236, 0.98), rgba(255, 248, 236, 0.76)),
       url("../assets/images/premium_photo-1661475948697-d810b6d36888.avif") center/cover;
   }
 
   .hero-content {
-    padding: 54px 0;
+    padding: 42px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.25rem, 11vw, 3.4rem);
+  }
+
+  .hero p:not(.eyebrow),
+  .feature-copy p,
+  .age-section p,
+  .support-section p,
+  .info-page p,
+  .info-page li {
+    font-size: 1rem;
+  }
+
+  .hero-actions,
+  .feature-copy .button {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 16px;
+    text-align: center;
   }
 
   .feature-section,
@@ -674,6 +721,12 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .age-card,
+  .support-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -682,6 +735,8 @@ h2 {
   .media-placeholder,
   .visual-placeholder {
     min-height: 260px;
+    padding: 22px;
+    border-radius: 18px;
   }
 
   .carousel {
@@ -690,5 +745,101 @@ h2 {
 
   .action-band {
     grid-template-columns: 1fr;
+  }
+
+  .info-page {
+    padding: 54px 0 68px;
+  }
+
+  .info-page h1 {
+    font-size: clamp(2.2rem, 11vw, 3.2rem);
+    line-height: 1.04;
+  }
+
+  .info-panel {
+    padding: 22px;
+    border-left-width: 6px;
+    border-radius: 16px;
+  }
+
+  .site-footer {
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+
+  .site-footer ul {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar,
+  .hero-content,
+  .feature-section,
+  .age-section,
+  .support-section,
+  .info-page {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .logo {
+    gap: 9px;
+    font-size: 0.95rem;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .menu-toggle {
+    padding: 9px 13px;
+  }
+
+  .hero {
+    min-height: 400px;
+  }
+
+  .hero-content {
+    padding: 34px 0;
+  }
+
+  .eyebrow,
+  .section-label {
+    font-size: 0.72rem;
+  }
+
+  .feature-section,
+  .age-section,
+  .support-section {
+    padding: 42px 0;
+  }
+
+  .feature-copy h2,
+  .age-section h2,
+  .support-section h2,
+  h2 {
+    font-size: clamp(1.75rem, 9vw, 2.35rem);
+  }
+
+  .feature-list li,
+  .age-card,
+  .support-card,
+  .info-panel {
+    padding: 18px;
+  }
+
+  .media-placeholder,
+  .visual-placeholder {
+    min-height: 220px;
+  }
+
+  .media-placeholder span,
+  .visual-placeholder span {
+    width: 100%;
+    border-radius: 14px;
   }
 }
