@@ -346,9 +346,35 @@ h2 {
   background: linear-gradient(135deg, var(--white), var(--blue));
 }
 
+.podcast-image {
+  overflow: hidden;
+  padding: 0;
+  background: var(--white);
+}
+
+.podcast-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+}
+
 .visual-placeholder {
   min-height: 420px;
   background: linear-gradient(135deg, var(--cream), var(--mint));
+}
+
+.campaign-image {
+  overflow: hidden;
+  padding: 0;
+  background: var(--white);
+}
+
+.campaign-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
 }
 
 .media-placeholder span,
@@ -848,6 +874,22 @@ h2 {
     border-radius: 18px;
   }
 
+  .podcast-image {
+    padding: 0;
+  }
+
+  .podcast-image img {
+    min-height: 260px;
+  }
+
+  .campaign-image {
+    padding: 0;
+  }
+
+  .campaign-image img {
+    min-height: 260px;
+  }
+
   .carousel {
     grid-auto-columns: minmax(260px, 86vw);
   }
@@ -944,6 +986,14 @@ h2 {
 
   .media-placeholder,
   .visual-placeholder {
+    min-height: 220px;
+  }
+
+  .podcast-image img {
+    min-height: 220px;
+  }
+
+  .campaign-image img {
     min-height: 220px;
   }
 
