@@ -23,17 +23,87 @@
         <li><a href="image.html">PSA Campaign</a></li>
         <li><a href="infographic.html">Infographic</a></li>
         <li><a href="artefact.html">Physical Artefact</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
   </header>
-  <main class="info-page" id="main-content">
-    <p class="section-label">Contact Us</p>
-    <h1>Contact Us</h1>
-    <p>Use these placeholder details for campaign contact information.</p>
-    <section class="info-panel">
-      <h2>Campaign contact</h2>
-      <p>Phone: 0000 000 000</p>
-      <p>Email: contact@example.org</p>
+  <main class="contact-page" id="main-content">
+    <section class="contact-hero" aria-labelledby="contact-title">
+      <p class="section-label">Contact Us</p>
+      <h1 id="contact-title">Contact the Energy Habits at Home team</h1>
+      <p>
+        Send a general question about the campaign, request resources, or contact the team using the details below.
+      </p>
+    </section>
+
+    <section class="contact-layout" aria-label="Contact information and form">
+      <div class="contact-directory">
+        <section class="contact-card">
+          <h2>Main Website Contact</h2>
+          <dl class="contact-list">
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:garv10tanwar@gmail.com">garv10tanwar@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+61280001234">+61 2 8000 1234</a></dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>
+                Energy Habits at Home<br>
+                123 Green Street<br>
+                Sydney NSW 2000, Australia
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="contact-card">
+          <h2>Campaign Support</h2>
+          <p>
+            For questions about the PSA campaign, podcast, infographic, or classroom-friendly resources,
+            contact the team by email or use the form.
+          </p>
+        </section>
+      </div>
+
+      <section class="contact-form-panel" aria-labelledby="form-title">
+        <h2 id="form-title">Submit a question</h2>
+        <form id="contact-form" action="https://formsubmit.co/garv10tanwar@gmail.com" method="post" novalidate>
+          <input id="form-email-subject" name="_subject" type="hidden" value="New website contact message">
+          <input id="form-next-page" name="_next" type="hidden" value="">
+          <input name="_template" type="hidden" value="table">
+          <input name="_captcha" type="hidden" value="false">
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" minlength="2" aria-describedby="name-error" required>
+            <span class="field-error" id="name-error"></span>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required>
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <div class="form-row">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" minlength="3" aria-describedby="subject-error" required>
+            <span class="field-error" id="subject-error"></span>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" minlength="10" aria-describedby="message-error" required></textarea>
+            <span class="field-error" id="message-error"></span>
+          </div>
+
+          <button class="button primary dark" type="submit">Send message</button>
+        </form>
+      </section>
     </section>
   </main>
   <footer class="site-footer">
@@ -48,8 +118,3 @@
   <script src="../js/script.js"></script>
 </body>
 </html>
-
-
-
-
-

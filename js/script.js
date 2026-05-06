@@ -5,6 +5,10 @@ const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector("#nav-links");
 const podcastPlayButton = document.querySelector(".podcast-trigger");
 const podcastPlayer = document.querySelector("#podcast-player");
+const contactForm = document.querySelector("#contact-form");
+const formStatus = document.querySelector("#form-status");
+const formEmailSubject = document.querySelector("#form-email-subject");
+const formNextPage = document.querySelector("#form-next-page");
 
 function scrollCards(direction) {
   if (!carousel) return;
@@ -56,4 +60,71 @@ document.addEventListener("keydown", (event) => {
   menuToggle?.setAttribute("aria-expanded", "false");
   menuToggle?.setAttribute("aria-label", "Open menu");
   document.body.classList.remove("menu-open");
+});
+
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const fields = [
+    {
+      input: contactForm.elements.name,
+      message: "Please enter your name.",
+      minMessage: "Name must be at least 2 characters."
+    },
+    {
+      input: contactForm.elements.email,
+      message: "Please enter your email address.",
+      typeMessage: "Please enter a valid email address."
+    },
+    {
+      input: contactForm.elements.subject,
+      message: "Please enter a subject.",
+      minMessage: "Subject must be at least 3 characters."
+    },
+    {
+      input: contactForm.elements.message,
+      message: "Please enter a message.",
+      minMessage: "Message must be at least 10 characters."
+    }
+  ];
+
+  let firstInvalidField = null;
+
+  fields.forEach(({ input, message, minMessage, typeMessage }) => {
+    const error = document.querySelector(`#${input.id}-error`);
+    input.setCustomValidity("");
+
+    if (input.validity.valueMissing) {
+      input.setCustomValidity(message);
+    } else if (input.validity.typeMismatch) {
+      input.setCustomValidity(typeMessage);
+    } else if (input.validity.tooShort) {
+      input.setCustomValidity(minMessage);
+    }
+
+    error.textContent = input.validationMessage;
+    input.toggleAttribute("aria-invalid", !input.validity.valid);
+
+    if (!input.validity.valid && !firstInvalidField) {
+      firstInvalidField = input;
+    }
+  });
+
+  if (firstInvalidField) {
+    formStatus.textContent = "Please fix the highlighted fields before sending.";
+    firstInvalidField.focus();
+    return;
+  }
+
+  const subject = contactForm.elements.subject.value.trim();
+
+  formStatus.textContent = "Sending your message...";
+  if (formEmailSubject) {
+    formEmailSubject.value = `New website contact message: ${subject}`;
+  }
+  if (formNextPage) {
+    formNextPage.value = new URL("thank-you.html", window.location.href).href;
+  }
+
+  contactForm.submit();
 });
