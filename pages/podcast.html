@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listen: Teaching Energy Habits at Home</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <nav class="navbar" aria-label="Main navigation">
       <a class="logo" href="../index.html"><span class="logo-mark">13</span><span>Energy Habits at Home</span></a>
@@ -25,10 +26,10 @@
       </ul>
     </nav>
   </header>
-  <main class="podcast-page">
+  <main class="podcast-page" id="main-content">
     <section class="podcast-hero" aria-labelledby="podcast-title">
       <div class="podcast-media">
-        <div class="podcast-placeholder" aria-label="Podcast cover placeholder">
+        <div class="podcast-placeholder" role="img" aria-label="Podcast cover art for Energy Habits at Home">
           <span>Energy Habits at Home</span>
         </div>
 
@@ -45,12 +46,12 @@
 
         <div class="podcast-controls">
           <div class="podcast-play-area">
-            <button class="podcast-play podcast-trigger" type="button" aria-controls="podcast-player">
+            <button class="podcast-play podcast-trigger" type="button" aria-controls="podcast-player" aria-expanded="false">
               <span aria-hidden="true"></span>
               Play 4 min
             </button>
 
-            <div class="podcast-player" id="podcast-player" aria-label="Audio player" hidden>
+            <div class="podcast-player" id="podcast-player" aria-label="Audio player" tabindex="-1" hidden>
               <button class="player-icon play" type="button" aria-label="Play audio"></button>
               <button class="player-icon rewind" type="button" aria-label="Rewind 10 seconds">10</button>
               <button class="player-icon volume" type="button" aria-label="Volume"></button>
@@ -58,8 +59,8 @@
               <span class="player-progress" aria-hidden="true"><span></span></span>
             </div>
           </div>
-          <a class="podcast-action" href="podcast-transcript.html" data-tooltip="Transcript" title="Transcript">Transcript</a>
-          <a class="podcast-action" href="../assets/audio/energy-habits-podcast.mp3" data-tooltip="Download" title="Download" download>Download</a>
+          <a class="podcast-action" href="podcast-transcript.html" data-tooltip="Transcript" title="Transcript">Read Transcript</a>
+          <a class="podcast-action" href="../assets/audio/energy-habits-podcast.mp3" data-tooltip="Audio coming soon" title="Audio coming soon" download>Download Podcast</a>
         </div>
       </div>
     </section>

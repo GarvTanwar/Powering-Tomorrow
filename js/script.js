@@ -23,8 +23,10 @@ nextButton?.addEventListener("click", () => scrollCards(1));
 
 podcastPlayButton?.addEventListener("click", () => {
   podcastPlayButton.setAttribute("hidden", "");
+  podcastPlayButton.setAttribute("aria-expanded", "true");
   if (podcastPlayer) {
     podcastPlayer.removeAttribute("hidden");
+    podcastPlayer.focus?.();
   }
 });
 
