@@ -116,26 +116,15 @@ a {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
-  gap: 12px;
-  color: var(--green-900);
-  font-weight: 800;
   text-decoration: none;
   min-width: 0;
 }
 
-.logo span:last-child {
-  overflow-wrap: anywhere;
-}
-
-.logo-mark {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  color: var(--green-900);
-  background: var(--yellow);
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(64, 48, 28, 0.12);
+.logo img {
+  width: auto;
+  height: 62px;
+  max-width: 220px;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -765,6 +754,10 @@ h2 {
   color: var(--white);
   background: #17231e;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) minmax(240px, 1fr);
+  gap: 32px;
+  align-items: start;
 }
 
 .site-footer p {
@@ -773,13 +766,14 @@ h2 {
   font-size: 0.98rem;
 }
 
-.site-footer ul {
+.footer-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 16px 32px;
   padding: 0;
-  margin: 26px 0 0;
-  list-style: none;
+  margin: 0;
+  grid-column: 2;
 }
 
 .site-footer a {
@@ -795,6 +789,38 @@ h2 {
 .site-footer a:focus-visible {
   color: var(--yellow);
   outline: none;
+}
+
+.footer-brand {
+  justify-self: start;
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  text-align: left;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.footer-brand img {
+  width: auto;
+  height: 58px;
+  object-fit: contain;
+}
+
+.footer-brand h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.footer-description {
+  max-width: 390px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-copy {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .info-page {
@@ -974,6 +1000,10 @@ h2 {
   gap: 18px;
 }
 
+.contact-form-panel form[hidden] {
+  display: none;
+}
+
 .form-row {
   display: grid;
   gap: 8px;
@@ -1030,10 +1060,105 @@ h2 {
   margin: 0;
 }
 
+.contact-success {
+  min-height: 500px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 20px;
+  padding: 28px 12px;
+  text-align: center;
+}
+
+.thank-you-page {
+  display: grid;
+  place-items: center;
+}
+
+.thank-you-card {
+  width: min(620px, 100%);
+}
+
+.contact-success[hidden] {
+  display: none;
+}
+
+.success-icon {
+  width: 104px;
+  height: auto;
+  margin-bottom: 2px;
+}
+
+.contact-success h1,
+.contact-success h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.08;
+}
+
+.contact-success p {
+  width: min(100%, 430px);
+  margin: 0 0 28px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.contact-success .button {
+  min-width: 150px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 .podcast-page {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
   padding: 76px 0 96px;
+}
+
+.error-page {
+  min-height: 70vh;
+  width: min(980px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 72px 0;
+}
+
+.error-section {
+  width: 100%;
+  text-align: center;
+}
+
+.error-code {
+  margin: 0 0 4px;
+  color: var(--green-900);
+  font-size: clamp(5.5rem, 17vw, 11rem);
+  font-weight: 900;
+  line-height: 0.9;
+}
+
+.error-section h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2.35rem, 6vw, 4.6rem);
+  line-height: 1.02;
+}
+
+.error-section > p:not(.section-label):not(.error-code) {
+  width: min(100%, 620px);
+  margin: 22px auto 0;
+  color: var(--muted);
+  font-size: 1.14rem;
+}
+
+.error-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
 }
 
 .podcast-hero {
@@ -1050,21 +1175,9 @@ h2 {
 }
 
 .podcast-placeholder {
-  min-height: 330px;
-  display: flex;
-  align-items: flex-end;
-  padding: 24px;
-  background:
-    linear-gradient(180deg, rgba(36, 68, 56, 0.08), rgba(36, 68, 56, 0.74)),
-    url("../assets/images/podcast_img.png") center/cover;
-}
-
-.podcast-placeholder span {
-  max-width: 220px;
-  color: var(--white);
-  font-size: 1.7rem;
-  font-weight: 900;
-  line-height: 1.05;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .podcast-series-label {
@@ -1441,7 +1554,7 @@ button:focus-visible {
   }
 
   .nav-links::before {
-    content: "13  Energy Habits at Home";
+    content: "Powering Tomorrow";
     display: block;
     margin: 0 0 18px;
     padding-bottom: 18px;
@@ -1571,8 +1684,7 @@ button:focus-visible {
     padding: 52px 0;
   }
 
-  .age-grid,
-  .site-footer {
+  .age-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1658,14 +1770,25 @@ button:focus-visible {
   }
 
   .site-footer {
+    grid-template-columns: 1fr;
+    gap: 28px;
     padding-top: 26px;
     padding-bottom: 26px;
   }
 
-  .site-footer ul {
+  .footer-links {
     flex-direction: column;
+    justify-content: flex-start;
     gap: 8px;
-    margin-top: 20px;
+    grid-column: 1;
+  }
+
+  .footer-brand {
+    justify-self: start;
+    justify-items: start;
+    text-align: left;
+    grid-column: 1;
+    grid-row: auto;
   }
 }
 
@@ -1682,14 +1805,11 @@ button:focus-visible {
   }
 
   .logo {
-    gap: 9px;
-    font-size: 0.95rem;
+    max-width: 190px;
   }
 
-  .logo-mark {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+  .logo img {
+    height: 52px;
   }
 
   .menu-toggle {
@@ -1747,10 +1867,6 @@ button:focus-visible {
     font-size: 2.2rem;
   }
 
-  .podcast-placeholder {
-    min-height: 280px;
-  }
-
   .feature-list li,
   .age-card,
   .summary-panel,
@@ -1758,6 +1874,19 @@ button:focus-visible {
   .contact-card,
   .contact-form-panel {
     padding: 18px;
+  }
+
+  .contact-success {
+    min-height: 430px;
+    padding: 24px 4px;
+  }
+
+  .thank-you-card {
+    width: min(100%, 440px);
+  }
+
+  .success-icon {
+    width: 88px;
   }
 
   .age-card {
@@ -1783,6 +1912,20 @@ button:focus-visible {
 
   .summary-stats p {
     flex: 1 1 100%;
+  }
+
+  .error-page {
+    min-height: 70vh;
+    padding: 54px 0;
+  }
+
+  .error-actions {
+    display: grid;
+  }
+
+  .error-actions .button {
+    width: 100%;
+    justify-content: center;
   }
 
   .summary-main > p:last-of-type {

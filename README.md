@@ -1,4 +1,4 @@
-﻿# Energy Habits at Home PSA Website
+# Powering Tomorrow PSA Website
 
 This project is a public service announcement website about teaching children energy-saving habits at home. The website is made for parents, carers, and home owners. It explains simple ways families can reduce wasted energy through everyday routines like switching off lights, unplugging chargers, and checking devices.
 

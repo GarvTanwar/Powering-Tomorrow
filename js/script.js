@@ -7,8 +7,6 @@ const podcastPlayButton = document.querySelector(".podcast-trigger");
 const podcastPlayer = document.querySelector("#podcast-player");
 const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
-const formEmailSubject = document.querySelector("#form-email-subject");
-const formNextPage = document.querySelector("#form-next-page");
 
 function scrollCards(direction) {
   if (!carousel) return;
@@ -62,7 +60,7 @@ document.addEventListener("keydown", (event) => {
   document.body.classList.remove("menu-open");
 });
 
-contactForm?.addEventListener("submit", (event) => {
+contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const fields = [
@@ -116,15 +114,33 @@ contactForm?.addEventListener("submit", (event) => {
     return;
   }
 
-  const subject = contactForm.elements.subject.value.trim();
-
-  formStatus.textContent = "Sending your message...";
-  if (formEmailSubject) {
-    formEmailSubject.value = `New website contact message: ${subject}`;
-  }
-  if (formNextPage) {
-    formNextPage.value = new URL("thank-you.html", window.location.href).href;
+  if (!contactForm.action || contactForm.action.includes("YOUR_FORM_ID")) {
+    formStatus.textContent = "The contact form is not connected yet. Please try again later.";
+    return;
   }
 
-  contactForm.submit();
+  formStatus.textContent = "";
+  const submitButton = contactForm.querySelector("button[type='submit']");
+  submitButton?.setAttribute("disabled", "");
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Formspree request failed with status ${response.status}`);
+    }
+
+    window.location.href = new URL("thank-you.html", window.location.href).href;
+  } catch (error) {
+    formStatus.textContent = "Sorry, your message could not be sent. Please try again.";
+    console.error("Formspree send failed:", error);
+  } finally {
+    submitButton?.removeAttribute("disabled");
+  }
 });
