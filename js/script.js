@@ -81,6 +81,71 @@ function setupPodcastShare() {
   });
 }
 
+function setupAboutPage() {
+  const revealItems = document.querySelectorAll(".about-reveal");
+  const valueButtons = document.querySelectorAll(".value-letter");
+  const valueTitle = document.querySelector("#active-value-title");
+  const valueCopy = document.querySelector("#active-value-copy");
+  const approachCarousel = document.querySelector("#approach-carousel");
+  const approachPrevious = document.querySelector("#approach-prev");
+  const approachNext = document.querySelector("#approach-next");
+  const flashcards = document.querySelectorAll(".team-flashcard");
+
+  if (revealItems.length) {
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.18 });
+
+      revealItems.forEach((item) => revealObserver.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }
+  }
+
+  function activateValue(button) {
+    valueButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+    if (valueTitle) valueTitle.textContent = button.dataset.valueTitle || "";
+    if (valueCopy) valueCopy.textContent = button.dataset.valueCopy || "";
+  }
+
+  valueButtons.forEach((button) => {
+    button.addEventListener("focus", () => activateValue(button));
+    button.addEventListener("click", () => activateValue(button));
+  });
+
+  function scrollApproachCards(direction) {
+    if (!approachCarousel) return;
+
+    const firstCard = approachCarousel.querySelector(".approach-card");
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
+
+    approachCarousel.scrollBy({
+      left: direction * (cardWidth + 18),
+      behavior: "smooth"
+    });
+  }
+
+  approachPrevious?.addEventListener("click", () => scrollApproachCards(-1));
+  approachNext?.addEventListener("click", () => scrollApproachCards(1));
+
+  flashcards.forEach((card) => {
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped");
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      card.classList.toggle("is-flipped");
+    });
+  });
+}
+
 previousButton?.addEventListener("click", () => scrollCards(-1));
 nextButton?.addEventListener("click", () => scrollCards(1));
 
@@ -95,6 +160,7 @@ podcastPlayButton?.addEventListener("click", () => {
 
 setupMenu();
 setupPodcastShare();
+setupAboutPage();
 
 contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();

@@ -1,1 +1,73 @@
 @import url("../global.css");
+
+.faq-intro {
+  max-width: 680px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 36px;
+  border-top: 1px solid rgba(36, 68, 56, 0.16);
+}
+
+.faq-list details {
+  border-bottom: 1px solid rgba(36, 68, 56, 0.16);
+}
+
+.faq-list summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 44px 22px 0;
+  color: var(--green-900);
+  font-size: clamp(1.15rem, 2.6vw, 1.55rem);
+  font-weight: 900;
+  line-height: 1.2;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  width: 12px;
+  height: 12px;
+  border-right: 3px solid var(--green-700);
+  border-bottom: 3px solid var(--green-700);
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.faq-list details[open] summary::after {
+  transform: rotate(225deg);
+}
+
+.faq-list p {
+  max-width: 720px;
+  margin: -4px 0 22px;
+  color: var(--muted);
+}
+
+.faq-list summary:hover,
+.faq-list summary:focus-visible {
+  color: var(--green-700);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .faq-list {
+    margin-top: 28px;
+  }
+
+  .faq-list summary {
+    padding: 20px 36px 20px 0;
+  }
+}

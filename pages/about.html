@@ -3,24 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us</title>
+  <title>Powering Tomorrow</title>
   <link rel="stylesheet" href="../css/pages/about.css">
 </head>
 <body data-root="../">
   <div data-layout="header"></div>
-  <main class="info-page" id="main-content">
-    <p class="section-label">About Us</p>
-    <h1>About This Campaign</h1>
-    <p>Powering Tomorrow is a public service campaign for parents and home owners who want to teach children simple ways to reduce wasted energy.</p>
-    <section class="info-panel">
-      <h2>Our purpose</h2>
-      <p>We focus on everyday family routines: switching off lights, unplugging chargers, checking devices, and helping children understand why these habits matter at home.</p>
+
+  <main class="about-page" id="main-content">
+    <div class="about-hero-shell">
+      <section class="about-hero about-reveal" aria-labelledby="about-title">
+        <h1 id="about-title">Who is Powering Tomorrow <span>anyway?</span></h1>
+        <p>
+          Powering Tomorrow is a student PSA campaign helping families turn energy saving, climate awareness, and sustainable living into simple habits at home.
+        </p>
+        <div class="hero-campaign-links" aria-label="Campaign resources">
+          <a class="hero-campaign-link psa-link" href="image.html">
+            <span class="hero-link-icon"><img src="../assets/images/psa_icon.png" alt="" aria-hidden="true"></span>
+            <strong>Public Service Announcement</strong>
+            <small>Campaign visual</small>
+          </a>
+          <a class="hero-campaign-link podcast-link" href="podcast.html">
+            <span class="hero-link-icon"><img src="../assets/images/podcast_icon.png" alt="" aria-hidden="true"></span>
+            <strong>Podcast</strong>
+            <small>Listen and learn</small>
+          </a>
+          <a class="hero-campaign-link artefact-link" href="artefact.html">
+            <span class="hero-link-icon"><img src="../assets/images/physical_artifact_icon.png" alt="" aria-hidden="true"></span>
+            <strong>Physical Artifact</strong>
+            <small>Hands-on message</small>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <section class="about-section story-section about-reveal" aria-labelledby="story-title">
+      <p class="section-label">The Powering Tomorrow Story</p>
+      <h2 id="story-title">Small actions at home can grow into lifelong habits.</h2>
+
+      <div class="story-grid">
+        <article class="story-copy">
+          <p class="story-kicker">Our Mission</p>
+          <p>
+            Our mission is to encourage families to reduce wasted energy, understand climate responsibility, and build daily sustainable habits at home. The campaign focuses on realistic household routines that children can see, understand, and repeat with support from parents and carers.
+          </p>
+        </article>
+        <article class="story-copy">
+          <p class="story-kicker">Why We Started</p>
+          <p>
+            Climate change and energy bills can feel overwhelming for families. Powering Tomorrow was created to make sustainability practical, calm, and easy for children and parents to understand.
+          </p>
+        </article>
+        <div class="story-note">
+          <span>5</span>
+          <p>students building one family-focused energy awareness campaign</p>
+        </div>
+      </div>
     </section>
-    <section class="info-panel">
-      <h2>Who it is for</h2>
-      <p>The campaign is written for parents, carers, and families. It keeps the message practical, calm, and easy to use with children at different ages.</p>
+
+    <section class="about-section core-values about-reveal" aria-labelledby="values-title">
+      <p class="section-label">Our Core Values</p>
+      <h2 id="values-title">Five ideas power the campaign.</h2>
+      <p>
+        Instead of a long list of topics, our campaign is built around values that make energy education more useful for families.
+      </p>
+
+      <div class="values-experience">
+        <div class="value-word" aria-label="Power core values">
+          <button class="value-letter" type="button" data-value-title="Practical" data-value-copy="Energy advice should fit real homes, real routines, and busy family life.">
+            <span>P</span>
+            <strong>Practical</strong>
+          </button>
+          <button class="value-letter" type="button" data-value-title="Open" data-value-copy="Climate conversations should feel welcoming, honest, and easy to start.">
+            <span>O</span>
+            <strong>Open</strong>
+          </button>
+          <button class="value-letter" type="button" data-value-title="Wise" data-value-copy="Small choices become stronger when families understand why they matter.">
+            <span>W</span>
+            <strong>Wise</strong>
+          </button>
+          <button class="value-letter" type="button" data-value-title="Educational" data-value-copy="Children learn through clear examples, visual cues, and repeated habits.">
+            <span>E</span>
+            <strong>Educational</strong>
+          </button>
+          <button class="value-letter" type="button" data-value-title="Responsible" data-value-copy="Every household can take small steps toward a more sustainable future.">
+            <span>R</span>
+            <strong>Responsible</strong>
+          </button>
+        </div>
+      </div>
     </section>
+
+    <section class="about-section approach-section about-reveal" aria-labelledby="approach-title">
+      <p class="section-label">Our Approach</p>
+      <h2 id="approach-title">A calmer way to learn about energy.</h2>
+      <p>
+        Powering Tomorrow uses simple language, visual learning, practical household routines, child-friendly examples, and calm, positive messaging. The aim is to make sustainability feel like something families can understand and repeat, not something they have to decode.
+      </p>
+
+      <div class="approach-carousel-wrap">
+        <div class="approach-carousel-controls" aria-label="Approach carousel controls">
+          <button class="approach-control" type="button" id="approach-prev" aria-label="Previous approach">‹</button>
+          <button class="approach-control" type="button" id="approach-next" aria-label="Next approach">›</button>
+        </div>
+
+        <div class="approach-carousel" id="approach-carousel" aria-label="Campaign approach carousel">
+          <article class="approach-card">
+            <span>01</span>
+            <h3>Simple language</h3>
+            <p>Short, clear wording helps families understand energy habits without technical language.</p>
+          </article>
+          <article class="approach-card">
+            <span>02</span>
+            <h3>Visual learning</h3>
+            <p>Images and campaign visuals make the message easier for children to notice and remember.</p>
+          </article>
+          <article class="approach-card">
+            <span>03</span>
+            <h3>Household routines</h3>
+            <p>The campaign connects sustainability to everyday actions like lights, devices, heating, and cooling.</p>
+          </article>
+          <article class="approach-card">
+            <span>04</span>
+            <h3>Child-friendly examples</h3>
+            <p>Examples are written so parents can explain them to children in a natural, age-appropriate way.</p>
+          </article>
+          <article class="approach-card">
+            <span>05</span>
+            <h3>Positive messaging</h3>
+            <p>The tone stays hopeful, practical, and calm so families feel encouraged to take action.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section team-section about-reveal" aria-labelledby="team-title">
+      <p class="section-label">Meet Our Team</p>
+      <h2 id="team-title">The five students behind the campaign.</h2>
+      <p>
+        Our team brings together student voices, shared research, and creative ideas to make energy awareness easier for families to understand.
+      </p>
+
+      <div class="team-flashcards">
+        <article class="team-flashcard" tabindex="0">
+          <div class="team-flashcard-inner">
+            <div class="team-face team-front">
+              <div class="photo-slot" role="img" aria-label="Photo placeholder for Team Member 1">Photo</div>
+              <div class="team-front-meta">
+                <h3>Team Member 1</h3>
+                <span>Tap to flip</span>
+              </div>
+            </div>
+            <div class="team-face team-back">
+              <h3>Team Member 1</h3>
+              <p>Studying: Add course name</p>
+            </div>
+          </div>
+        </article>
+        <article class="team-flashcard" tabindex="0">
+          <div class="team-flashcard-inner">
+            <div class="team-face team-front">
+              <div class="photo-slot" role="img" aria-label="Photo placeholder for Team Member 2">Photo</div>
+              <div class="team-front-meta">
+                <h3>Team Member 2</h3>
+                <span>Tap to flip</span>
+              </div>
+            </div>
+            <div class="team-face team-back">
+              <h3>Team Member 2</h3>
+              <p>Studying: Add course name</p>
+            </div>
+          </div>
+        </article>
+        <article class="team-flashcard" tabindex="0">
+          <div class="team-flashcard-inner">
+            <div class="team-face team-front">
+              <div class="photo-slot" role="img" aria-label="Photo placeholder for Team Member 3">Photo</div>
+              <div class="team-front-meta">
+                <h3>Team Member 3</h3>
+                <span>Tap to flip</span>
+              </div>
+            </div>
+            <div class="team-face team-back">
+              <h3>Team Member 3</h3>
+              <p>Studying: Add course name</p>
+            </div>
+          </div>
+        </article>
+        <article class="team-flashcard" tabindex="0">
+          <div class="team-flashcard-inner">
+            <div class="team-face team-front">
+              <div class="photo-slot" role="img" aria-label="Photo placeholder for Team Member 4">Photo</div>
+              <div class="team-front-meta">
+                <h3>Team Member 4</h3>
+                <span>Tap to flip</span>
+              </div>
+            </div>
+            <div class="team-face team-back">
+              <h3>Team Member 4</h3>
+              <p>Studying: Add course name</p>
+            </div>
+          </div>
+        </article>
+        <article class="team-flashcard" tabindex="0">
+          <div class="team-flashcard-inner">
+            <div class="team-face team-front">
+              <div class="photo-slot" role="img" aria-label="Photo placeholder for Team Member 5">Photo</div>
+              <div class="team-front-meta">
+                <h3>Team Member 5</h3>
+                <span>Tap to flip</span>
+              </div>
+            </div>
+            <div class="team-face team-back">
+              <h3>Team Member 5</h3>
+              <p>Studying: Add course name</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
   </main>
+
   <div data-layout="footer"></div>
   <script src="../js/layout.js"></script>
   <script src="../js/script.js"></script>

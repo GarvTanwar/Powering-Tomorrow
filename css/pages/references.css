@@ -1,1 +1,62 @@
 @import url("../global.css");
+
+.references-intro {
+  max-width: 680px;
+}
+
+.references-section {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(36, 68, 56, 0.16);
+}
+
+.references-section h2 {
+  margin: 0 0 22px;
+  color: var(--green-900);
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  line-height: 1.05;
+}
+
+.references-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: references;
+}
+
+.references-list li {
+  position: relative;
+  min-height: 52px;
+  padding: 18px 0 18px 54px;
+  border-bottom: 1px solid rgba(36, 68, 56, 0.13);
+  color: var(--muted);
+  line-height: 1.55;
+  counter-increment: references;
+}
+
+.references-list li::before {
+  content: counter(references, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 20px;
+  color: var(--green-700);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.references-list li:first-child {
+  border-top: 0;
+}
+
+@media (max-width: 640px) {
+  .references-section {
+    margin-top: 34px;
+  }
+
+  .references-list li {
+    padding-left: 44px;
+  }
+}
