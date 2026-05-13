@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Hero Certificate | Powering Tomorrow</title>
+  <link rel="icon" type="image/png" href="../assets/images/new_logo.png">
+  <link rel="stylesheet" href="../css/pages/quiz.css?v=4">
+</head>
+<body data-root="../">
+  <div data-layout="header"></div>
+  <main class="quiz-page certificate-page" id="main-content">
+    <section class="quiz-hero certificate-hero quiz-fade-up" aria-labelledby="certificate-page-title">
+      <div class="quiz-hero-copy">
+        <h1 id="certificate-page-title">Energy Hero Certificate</h1>
+        <p id="certificate-result-summary">Enter your name to generate your certificate from the quiz result.</p>
+      </div>
+
+      <div class="quiz-guide" aria-label="Captain Wattson certificate guide">
+        <div class="quiz-speech">Claim your certificate</div>
+        <img src="../assets/images/Mascot3.png" alt="Captain Wattson ready with a certificate">
+      </div>
+    </section>
+
+    <section class="quiz-layout quiz-fade-up" aria-label="Energy hero certificate">
+      <section class="certificate-section" id="certificate-section" aria-labelledby="certificate-heading">
+        <div class="certificate-intro">
+          <p class="quiz-count">Captain Wattson Certificate</p>
+          <h2 id="certificate-heading">Become an Energy Hero</h2>
+          <p>Enter your name and let Captain Wattson certify your energy-saving power.</p>
+        </div>
+
+        <div class="certificate-controls">
+          <label for="hero-name">Energy hero name</label>
+          <div class="certificate-form">
+            <input type="text" id="hero-name" name="hero-name" autocomplete="name" placeholder="Enter your name">
+            <button class="quiz-button primary" type="button" id="generate-certificate">Generate Certificate</button>
+          </div>
+          <p class="certificate-status" id="certificate-status" aria-live="polite"></p>
+        </div>
+
+        <div class="certificate-card" id="certificate-card" hidden>
+          <p class="certificate-label">Powering Tomorrow</p>
+          <h3 id="certificate-title">Energy Hero Certificate</h3>
+          <p class="certificate-badge" id="certificate-badge"></p>
+          <p class="certificate-presented">This certificate is proudly awarded to</p>
+          <p class="certificate-name" id="certificate-name"></p>
+          <p class="certificate-message" id="certificate-message">has completed Captain Wattson's Energy Quiz and is now a certified Energy Hero.</p>
+          <div class="certificate-footer">
+            <p><span>Date</span><strong id="certificate-date"></strong></p>
+            <p><span>Certified by</span><strong>Captain Wattson</strong></p>
+          </div>
+        </div>
+
+        <button class="quiz-button secondary certificate-download" type="button" id="download-certificate" hidden>Download Certificate</button>
+      </section>
+    </section>
+  </main>
+  <div data-layout="footer"></div>
+  <script src="../js/layout.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/certificate.js"></script>
+</body>
+</html>

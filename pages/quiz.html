@@ -3,19 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Climate Challenge | Powering Tomorrow</title>
+  <title>Captain Wattson's Energy Quiz | Powering Tomorrow</title>
   <link rel="icon" type="image/png" href="../assets/images/new_logo.png">
-  <link rel="stylesheet" href="../css/pages/quiz.css?v=3">
+  <link rel="stylesheet" href="../css/pages/quiz.css?v=4">
 </head>
 <body data-root="../">
   <div data-layout="header"></div>
   <main class="quiz-page" id="main-content">
-    <section class="quiz-hero" aria-labelledby="quiz-title">
-      <h1 id="quiz-title">Climate Challenge by Age</h1>
-      <p>Choose an age group, answer ten simple questions, and check the score at the end.</p>
+    <section class="quiz-hero quiz-fade-up" aria-labelledby="quiz-title">
+      <div class="quiz-hero-copy">
+        <h1 id="quiz-title">Captain Wattson's Energy Quiz</h1>
+        <ul class="quiz-hero-points" aria-label="Quiz steps">
+          <li><span aria-hidden="true">1</span>Choose your age group</li>
+          <li><span aria-hidden="true">2</span>Answer fun climate questions</li>
+          <li><span aria-hidden="true">3</span>Learn how to help the planet</li>
+          <li><span aria-hidden="true">4</span>Generate your certificate after completing the quiz, no matter your score</li>
+        </ul>
+      </div>
+
+      <div class="quiz-guide" aria-label="Captain Wattson quiz guide">
+        <div class="quiz-speech">Ready to become an energy hero?</div>
+        <img src="../assets/images/Quiz_Mascot.png" alt="Captain Wattson holding a checklist for the quiz">
+      </div>
     </section>
 
-    <section class="quiz-layout" aria-label="Age group climate quizzes">
+    <div class="quiz-result-slot quiz-fade-up">
+      <p class="result-message" id="result-message" aria-live="polite"></p>
+    </div>
+
+    <section class="quiz-layout quiz-fade-up" aria-label="Age group climate quizzes">
       <section class="quiz-panel" aria-live="polite">
         <div class="quiz-panel-header">
           <div class="quiz-title-block">
@@ -26,7 +42,7 @@
         </div>
 
         <div class="quiz-picker" aria-label="Choose quiz age group">
-          <p id="quiz-group-label">Choose quiz group</p>
+          <p id="quiz-group-label"><span class="quiz-bolt" aria-hidden="true"></span>Choose quiz group</p>
           <div class="quiz-group-options" role="group" aria-labelledby="quiz-group-label">
             <button class="quiz-group-option" type="button" data-group="ages-6-8">Ages 6-8</button>
             <button class="quiz-group-option" type="button" data-group="ages-9-10">Ages 9-10</button>
@@ -39,13 +55,10 @@
 
         <div class="quiz-actions">
           <button class="quiz-button secondary" type="button" id="reset-button">Reset</button>
-          <button class="quiz-button primary" type="submit" form="quiz-form">Check answers</button>
+          <button class="quiz-button primary" type="submit" form="quiz-form">Submit Quiz</button>
         </div>
-
-        <p class="result-message" id="result-message" aria-live="polite"></p>
       </section>
     </section>
-
   </main>
   <div data-layout="footer"></div>
   <script src="../js/layout.js"></script>

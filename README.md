@@ -40,7 +40,6 @@ Assignment4_PSA/
     |-- kids-9-10.html
     |-- kids-12-13.html
     |-- kids-15-16.html
-    |-- kids.html
     |-- podcast.html
     |-- references.html
     |-- solutions.html
@@ -70,10 +69,6 @@ This page is for the infographic. It includes simple household energy facts that
 ### `pages/artefact.html`
 
 This page is for the physical artefact. It explains that the artefact could be a fridge reminder card, poster, display board, or sticker set. There is currently a placeholder where a photo of the final physical artefact can be added.
-
-### `pages/kids.html`
-
-This page is the general overview for teaching children by age. It includes all age groups together.
 
 ### `pages/kids-6-7.html`
 

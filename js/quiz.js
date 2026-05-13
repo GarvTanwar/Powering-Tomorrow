@@ -339,6 +339,7 @@ function renderQuiz() {
   groupDescription.textContent = group.description;
   quizCount.textContent = `${group.questions.length} questions`;
   resultMessage.textContent = "";
+  resultMessage.classList.remove("is-complete");
   quizForm.innerHTML = "";
 
   group.questions.forEach((item, questionIndex) => {
@@ -417,6 +418,59 @@ function renderFeedback(feedback, status, explanation) {
   feedback.append(statusText, explanationText);
 }
 
+function renderResultMessage(score, total) {
+  const isStrongScore = score >= 8;
+
+  resultMessage.classList.add("is-complete");
+  resultMessage.textContent = "";
+
+  const mascotIcon = document.createElement("img");
+  mascotIcon.src = "../assets/images/Mascot3.png";
+  mascotIcon.alt = "";
+  mascotIcon.setAttribute("aria-hidden", "true");
+
+  const resultText = document.createElement("span");
+
+  const resultTitle = document.createElement("span");
+  resultTitle.className = "result-title";
+  resultTitle.textContent = `Mission complete: ${score}/${total}`;
+
+  const resultCopy = document.createElement("span");
+  resultCopy.className = "result-copy";
+  resultCopy.textContent = isStrongScore
+    ? "Great energy hero work. You are ready to help your family save power."
+    : "Review the marked answers, learn the tips, and try the mission again.";
+
+  const certificateLink = document.createElement("a");
+  certificateLink.className = "quiz-button primary result-certificate-link";
+  certificateLink.href = "certificate.html";
+  certificateLink.textContent = "Generate your certificate";
+
+  resultText.append(resultTitle, resultCopy);
+  resultMessage.append(mascotIcon, resultText, certificateLink);
+}
+
+function storeQuizResult(score, total) {
+  const group = quizGroups[activeGroup];
+  const result = {
+    score,
+    total,
+    group: activeGroup,
+    groupHeading: group.heading,
+    completedAt: new Date().toISOString()
+  };
+
+  try {
+    window.localStorage.setItem("captainWattsonQuizResult", JSON.stringify(result));
+  } catch (error) {
+    const url = new URL("certificate.html", window.location.href);
+    url.searchParams.set("score", String(score));
+    url.searchParams.set("total", String(total));
+    url.searchParams.set("group", activeGroup);
+    resultMessage.querySelector(".result-certificate-link")?.setAttribute("href", url.href);
+  }
+}
+
 function checkAnswers(event) {
   event.preventDefault();
 
@@ -453,9 +507,9 @@ function checkAnswers(event) {
     }
   });
 
-  resultMessage.textContent = score >= 8
-    ? `Great result: ${score}/${group.questions.length}.`
-    : `You scored ${score}/${group.questions.length}. Review the marked answers and try again.`;
+  renderResultMessage(score, group.questions.length);
+  storeQuizResult(score, group.questions.length);
+  resultMessage.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 quizGroupButtons.forEach((button) => {

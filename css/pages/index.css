@@ -1,1 +1,69 @@
 @import url("../global.css");
+
+.kidz-zone-feature {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 70px);
+  align-items: center;
+  padding: 76px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.kidz-zone-mascot {
+  display: grid;
+  place-items: center;
+}
+
+.kidz-zone-mascot img {
+  width: min(360px, 100%);
+  filter: drop-shadow(0 20px 22px rgba(36, 68, 56, 0.16));
+}
+
+.kidz-zone-copy h2 {
+  max-width: 650px;
+  margin: 0;
+  color: var(--green-900);
+  font-size: clamp(2.15rem, 4.8vw, 4rem);
+  line-height: 1.02;
+}
+
+.kidz-zone-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+@media (max-width: 820px) {
+  .kidz-zone-feature {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 54px 0;
+    text-align: center;
+  }
+
+  .kidz-zone-copy h2 {
+    margin: 0 auto;
+  }
+
+  .kidz-zone-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .kidz-zone-feature {
+    width: min(100% - 24px, 1180px);
+    padding: 42px 0;
+  }
+
+  .kidz-zone-mascot img {
+    width: min(280px, 100%);
+  }
+
+  .kidz-zone-actions {
+    display: grid;
+  }
+}
