@@ -1,26 +1,26 @@
 @import url("../global.css");
 
 :root {
-  --bag-yellow: #ffd94a;
-  --bag-blue: #dff3ff;
-  --bag-blue-strong: #1f8ed6;
-  --bag-ink: #162033;
+  --wind-yellow: #ffd94a;
+  --wind-sky: #dff3ff;
+  --wind-blue: #1f8ed6;
+  --wind-ink: #162033;
 }
 
-.lunch-bag-page {
+.windmill-page {
   width: 100%;
   padding: 0 0 88px;
   background: var(--paper);
 }
 
-.lunch-hero,
+.windmill-hero,
 .requirements-section,
 .steps-section {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
 }
 
-.lunch-hero {
+.windmill-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
   align-items: center;
@@ -28,15 +28,15 @@
   padding: clamp(46px, 7vw, 76px) 0 clamp(18px, 3vw, 34px);
 }
 
-.lunch-hero h1 {
-  max-width: 760px;
+.windmill-hero h1 {
+  max-width: 780px;
   margin: 0;
   color: var(--green-900);
   font-size: clamp(2.8rem, 8vw, 5.7rem);
   line-height: 0.96;
 }
 
-.lunch-hero-copy > p {
+.windmill-hero-copy > p {
   max-width: 650px;
   margin: 18px 0 0;
   color: #53616e;
@@ -45,7 +45,7 @@
   line-height: 1.62;
 }
 
-.lunch-hero-art {
+.windmill-hero-art {
   position: relative;
   min-height: 420px;
   display: grid;
@@ -53,32 +53,33 @@
   align-content: center;
 }
 
-.lunch-hero-art img {
+.windmill-hero-art img {
   position: relative;
   z-index: 1;
-  width: min(360px, 82vw);
+  width: min(430px, 88vw);
   height: auto;
-  animation: lunch-mascot-float 4.8s ease-in-out infinite;
+  margin-top: clamp(-118px, -7vw, -72px);
+  animation: windmill-mascot-float 4.8s ease-in-out infinite;
 }
 
-.lunch-speech {
+.windmill-speech {
   position: relative;
   z-index: 2;
-  max-width: 300px;
-  margin: 0 auto 14px;
+  max-width: 310px;
+  margin: 14px auto 4px;
   padding: 13px 15px;
-  color: var(--bag-ink);
+  color: var(--wind-ink);
   background: var(--white);
   border: 2px solid rgba(22, 32, 51, 0.9);
   border-radius: 18px;
-  box-shadow: 5px 5px 0 rgba(255, 217, 74, 0.62);
+  box-shadow: 5px 5px 0 rgba(31, 142, 214, 0.28);
   font-size: 0.94rem;
   font-weight: 900;
   line-height: 1.35;
   text-align: center;
 }
 
-.lunch-speech::after {
+.windmill-speech::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -93,7 +94,7 @@
 
 .section-label {
   margin: 0 0 10px;
-  color: var(--bag-blue-strong);
+  color: var(--wind-blue);
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -140,7 +141,7 @@
 }
 
 .requirements-list span {
-  color: var(--bag-blue-strong);
+  color: var(--wind-blue);
   font-size: clamp(1.45rem, 3vw, 2.2rem);
   font-weight: 900;
   line-height: 1;
@@ -180,14 +181,14 @@
 
 .step-number {
   margin: 0 0 12px;
-  color: var(--bag-yellow);
+  color: var(--wind-yellow);
   font-size: clamp(4rem, 10vw, 7.2rem);
   font-weight: 900;
   line-height: 0.82;
   text-shadow: 3px 3px 0 var(--green-900);
 }
 
-.step-content h3 {
+.step-content h4 {
   max-width: 430px;
   margin: 0;
   color: var(--green-900);
@@ -195,7 +196,7 @@
   line-height: 1.14;
 }
 
-.step-content p:not(.step-number) {
+.step-description {
   max-width: 520px;
   margin: 12px 0 0;
   color: #53616e;
@@ -221,20 +222,24 @@
 }
 
 @media (max-width: 880px) {
-  .lunch-hero {
+  .windmill-hero {
     min-height: auto;
     grid-template-columns: 1fr;
     text-align: center;
   }
 
-  .lunch-hero-copy > p {
+  .windmill-hero-copy > p {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .lunch-hero-art {
+  .windmill-hero-art {
     width: min(420px, 100%);
     margin: 0 auto;
+  }
+
+  .windmill-hero-art img {
+    margin-top: clamp(-96px, -14vw, -54px);
   }
 
   .step-row,
@@ -249,13 +254,13 @@
 }
 
 @media (max-width: 640px) {
-  .lunch-hero,
+  .windmill-hero,
   .requirements-section,
   .steps-section {
     width: min(100% - 24px, 1120px);
   }
 
-  .lunch-hero-art {
+  .windmill-hero-art {
     min-height: 390px;
   }
 
@@ -306,7 +311,7 @@
   transform: translate(0, 0);
 }
 
-@keyframes lunch-mascot-float {
+@keyframes windmill-mascot-float {
   0%,
   100% {
     transform: translateY(0) rotate(-1deg);
@@ -318,7 +323,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lunch-hero-art img {
+  .windmill-hero-art img {
     animation: none;
   }
 

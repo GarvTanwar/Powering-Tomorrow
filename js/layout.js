@@ -47,7 +47,7 @@ function renderHeader() {
             <ul class="nav-dropdown-menu" id="kidz-zone-menu" aria-label="Kidz Zone pages">
               <li><a href="${page("pages/our-mascot.html")}">Our Mascot</a></li>
               <li><a href="${page("pages/quiz.html")}">Quiz</a></li>
-              <li><a href="${page("pages/reusable-lunch-bag.html")}">Reusable Lunch Bag</a></li>
+              <li><a href="${page("pages/diy-energy-lab.html")}">DIY Energy Lab</a></li>
             </ul>
           </li>
           <li><a href="${page("pages/about.html")}">${navIcon("about")}<span>About Us</span></a></li>
@@ -93,7 +93,7 @@ function renderFooter() {
         <p class="footer-heading">Kidz Zone</p>
         <a href="${page("pages/our-mascot.html")}">Our Mascot</a>
         <a href="${page("pages/quiz.html")}">Quiz</a>
-        <a href="${page("pages/reusable-lunch-bag.html")}">Reusable Lunch Bag</a>
+        <a href="${page("pages/diy-energy-lab.html")}">DIY Energy Lab</a>
       </nav>
       <nav class="footer-column" aria-label="Policies">
         <p class="footer-heading">Policies</p>
