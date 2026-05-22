@@ -3,6 +3,7 @@ const previousButton = document.querySelector("#prev-card");
 const nextButton = document.querySelector("#next-card");
 const podcastPlayButton = document.querySelector(".podcast-trigger");
 const podcastPlayer = document.querySelector("#podcast-player");
+const podcastAudio = document.querySelector("#podcast-audio");
 const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 const podcastShareLinks = document.querySelectorAll("[data-share-platform]");
@@ -106,6 +107,154 @@ function setupPodcastShare() {
       });
     }
   });
+}
+
+function setupPodcastPlayer() {
+  if (!podcastPlayer || !podcastAudio) return;
+
+  const toggleButton = podcastPlayer.querySelector(".player-toggle");
+  const backButton = podcastPlayer.querySelector(".player-back");
+  const forwardButton = podcastPlayer.querySelector(".player-forward");
+  const volumeButton = podcastPlayer.querySelector(".player-volume");
+  const volumeSlider = podcastPlayer.querySelector(".player-volume-slider");
+  const speedToggle = podcastPlayer.querySelector(".player-speed-toggle");
+  const speedMenu = podcastPlayer.querySelector(".player-speed-menu");
+  const speedOptions = podcastPlayer.querySelectorAll(".player-speed-option");
+  const progress = podcastPlayer.querySelector(".player-progress");
+  const currentTimeOutput = podcastPlayer.querySelector(".player-current-time");
+  const durationOutput = podcastPlayer.querySelector(".player-duration");
+  const fallbackDuration = 330;
+
+  function duration() {
+    return Number.isFinite(podcastAudio.duration) ? podcastAudio.duration : fallbackDuration;
+  }
+
+  function formatTime(value) {
+    const seconds = Math.max(0, Math.floor(Number.isFinite(value) ? value : 0));
+    const minutes = Math.floor(seconds / 60);
+    return `${minutes}:${String(seconds % 60).padStart(2, "0")}`;
+  }
+
+  function syncTime() {
+    const audioDuration = duration();
+    const currentTime = Math.min(podcastAudio.currentTime || 0, audioDuration);
+    const displayedTime = Math.min(currentTime, fallbackDuration);
+
+    if (progress) {
+      progress.max = String(audioDuration);
+      progress.value = String(currentTime);
+      progress.style.setProperty("--player-position", `${audioDuration ? currentTime / audioDuration * 100 : 0}%`);
+    }
+
+    if (currentTimeOutput) currentTimeOutput.textContent = formatTime(displayedTime);
+    if (durationOutput) durationOutput.textContent = formatTime(fallbackDuration);
+  }
+
+  function syncPlayState() {
+    const isPlaying = !podcastAudio.paused;
+    toggleButton?.classList.toggle("is-playing", isPlaying);
+    toggleButton?.setAttribute("aria-label", isPlaying ? "Pause podcast" : "Play podcast");
+  }
+
+  function syncVolumeState() {
+    const isMuted = podcastAudio.muted || podcastAudio.volume === 0;
+    volumeButton?.classList.toggle("is-muted", isMuted);
+    volumeButton?.setAttribute("aria-label", isMuted ? "Unmute podcast" : "Mute podcast");
+
+    if (volumeSlider) {
+      volumeSlider.value = String(isMuted ? 0 : podcastAudio.volume);
+      volumeSlider.style.setProperty("--volume-position", `${Number(volumeSlider.value) * 100}%`);
+    }
+  }
+
+  function setSpeedMenuState(isOpen) {
+    speedMenu?.toggleAttribute("hidden", !isOpen);
+    speedToggle?.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  function setPlaybackSpeed(speed) {
+    podcastAudio.playbackRate = speed;
+    speedToggle?.setAttribute("aria-label", `Playback speed. Current speed ${speed}x`);
+
+    speedOptions.forEach((option) => {
+      option.setAttribute("aria-checked", String(Number(option.dataset.speed) === speed));
+    });
+  }
+
+  function moveBy(seconds) {
+    podcastAudio.currentTime = Math.min(Math.max(0, podcastAudio.currentTime + seconds), duration());
+    syncTime();
+  }
+
+  toggleButton?.addEventListener("click", () => {
+    if (podcastAudio.paused) {
+      podcastAudio.play().catch(() => {});
+      return;
+    }
+
+    podcastAudio.pause();
+  });
+
+  backButton?.addEventListener("click", () => moveBy(-10));
+  forwardButton?.addEventListener("click", () => moveBy(10));
+
+  volumeButton?.addEventListener("click", () => {
+    podcastAudio.muted = !podcastAudio.muted;
+    syncVolumeState();
+  });
+
+  volumeSlider?.addEventListener("input", () => {
+    const nextVolume = Number(volumeSlider.value);
+
+    podcastAudio.volume = nextVolume;
+    podcastAudio.muted = nextVolume === 0;
+    syncVolumeState();
+  });
+
+  progress?.addEventListener("input", () => {
+    podcastAudio.currentTime = Number(progress.value);
+    syncTime();
+  });
+
+  speedToggle?.addEventListener("click", () => {
+    const isOpen = speedToggle.getAttribute("aria-expanded") === "true";
+    setSpeedMenuState(!isOpen);
+  });
+
+  speedOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      setPlaybackSpeed(Number(option.dataset.speed));
+      setSpeedMenuState(false);
+      speedToggle?.focus();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!speedToggle || speedMenu?.hasAttribute("hidden")) return;
+    if (speedToggle.contains(event.target) || speedMenu?.contains(event.target)) return;
+
+    setSpeedMenuState(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || speedMenu?.hasAttribute("hidden")) return;
+
+    setSpeedMenuState(false);
+    speedToggle?.focus();
+  });
+
+  podcastAudio.addEventListener("loadedmetadata", syncTime);
+  podcastAudio.addEventListener("durationchange", syncTime);
+  podcastAudio.addEventListener("timeupdate", syncTime);
+  podcastAudio.addEventListener("play", syncPlayState);
+  podcastAudio.addEventListener("pause", syncPlayState);
+  podcastAudio.addEventListener("ended", syncPlayState);
+  podcastAudio.addEventListener("volumechange", syncVolumeState);
+
+  syncTime();
+  syncPlayState();
+  syncVolumeState();
+  setPlaybackSpeed(1);
 }
 
 function setupAboutPage() {
@@ -259,14 +408,17 @@ nextButton?.addEventListener("click", () => scrollCards(1));
 podcastPlayButton?.addEventListener("click", () => {
   podcastPlayButton.setAttribute("hidden", "");
   podcastPlayButton.setAttribute("aria-expanded", "true");
-  if (podcastPlayer) {
+  if (podcastPlayer && podcastAudio) {
+    podcastPlayButton.closest(".podcast-play-area")?.classList.add("is-active");
     podcastPlayer.removeAttribute("hidden");
-    podcastPlayer.focus?.();
+    podcastPlayer.querySelector(".player-toggle")?.focus();
+    podcastAudio.play().catch(() => {});
   }
 });
 
 setupMenu();
 setupPodcastShare();
+setupPodcastPlayer();
 setupAboutPage();
 setupNekoEasterEgg();
 
