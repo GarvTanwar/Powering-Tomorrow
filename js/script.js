@@ -124,9 +124,12 @@ function setupPodcastPlayer() {
   const currentTimeOutput = podcastPlayer.querySelector(".player-current-time");
   const durationOutput = podcastPlayer.querySelector(".player-duration");
   const fallbackDuration = 330;
+  let blobSourceUrl;
 
   function duration() {
-    return Number.isFinite(podcastAudio.duration) ? podcastAudio.duration : fallbackDuration;
+    return Number.isFinite(podcastAudio.duration) && podcastAudio.duration > 0
+      ? podcastAudio.duration
+      : fallbackDuration;
   }
 
   function formatTime(value) {
@@ -181,7 +184,48 @@ function setupPodcastPlayer() {
     });
   }
 
-  function moveBy(seconds) {
+  function restoreBlobSourceState(currentTime, shouldResume) {
+    podcastAudio.addEventListener("loadedmetadata", () => {
+      if (currentTime > 0) podcastAudio.currentTime = Math.min(currentTime, duration());
+      if (shouldResume) podcastAudio.play().catch(() => {});
+      syncTime();
+    }, { once: true });
+  }
+
+  async function loadBlobSource() {
+    const source = podcastAudio.querySelector("source");
+    const sourceUrl = podcastAudio.currentSrc || source?.src;
+
+    if (!sourceUrl || !window.fetch || window.location.protocol === "file:") return;
+
+    try {
+      const response = await fetch(sourceUrl);
+      if (!response.ok) return;
+
+      const sourceBlob = await response.blob();
+      const currentTime = podcastAudio.currentTime || 0;
+      const shouldResume = !podcastAudio.paused;
+
+      blobSourceUrl = URL.createObjectURL(sourceBlob);
+      restoreBlobSourceState(currentTime, shouldResume);
+      podcastAudio.src = blobSourceUrl;
+      podcastAudio.load();
+    } catch {
+      // Keep the native audio source if the browser cannot create a blob source.
+    }
+  }
+
+  const blobSourceReady = loadBlobSource();
+
+  function hasSeekableRange() {
+    if (!podcastAudio.seekable.length) return false;
+
+    return podcastAudio.seekable.end(podcastAudio.seekable.length - 1) > 0;
+  }
+
+  async function moveBy(seconds) {
+    if (!hasSeekableRange()) await blobSourceReady;
+
     podcastAudio.currentTime = Math.min(Math.max(0, podcastAudio.currentTime + seconds), duration());
     syncTime();
   }
@@ -250,6 +294,9 @@ function setupPodcastPlayer() {
   podcastAudio.addEventListener("pause", syncPlayState);
   podcastAudio.addEventListener("ended", syncPlayState);
   podcastAudio.addEventListener("volumechange", syncVolumeState);
+  window.addEventListener("pagehide", () => {
+    if (blobSourceUrl) URL.revokeObjectURL(blobSourceUrl);
+  }, { once: true });
 
   syncTime();
   syncPlayState();
