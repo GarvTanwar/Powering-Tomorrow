@@ -2025,32 +2025,74 @@ h2 {
   gap: 16px;
 }
 
-.podcast-share-links a {
+.podcast-share-links a,
+.podcast-share-links button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   height: 28px;
+  padding: 0;
   color: var(--green-900);
   background: transparent;
   border: 0;
   border-radius: 0;
+  font: inherit;
+  cursor: pointer;
   text-decoration: none;
   transition: filter 160ms ease, transform 160ms ease;
 }
 
-.podcast-share-links svg {
+.podcast-share-links svg,
+.podcast-share-links img {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.podcast-share-links svg {
   fill: currentColor;
 }
 
+.podcast-share-links img {
+  object-fit: contain;
+}
+
 .podcast-share-links a:hover,
-.podcast-share-links a:focus-visible {
+.podcast-share-links a:focus-visible,
+.podcast-share-links button:hover,
+.podcast-share-links button:focus-visible {
   filter: drop-shadow(0 8px 8px rgba(5, 5, 5, 0.26));
   transform: translateY(-2px);
   outline: none;
+}
+
+.podcast-share-links [data-tooltip]::after {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  z-index: 3;
+  padding: 4px 7px;
+  color: var(--cream);
+  background: var(--green-900);
+  border-radius: 4px;
+  box-shadow: 0 6px 14px rgba(5, 5, 5, 0.18);
+  content: attr(data-tooltip);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+  white-space: nowrap;
+}
+
+.podcast-share-links [data-tooltip]:hover::after,
+.podcast-share-links [data-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .podcast-description {

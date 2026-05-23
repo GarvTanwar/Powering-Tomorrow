@@ -86,6 +86,7 @@ function setupPodcastShare() {
   const podcastTitle = "Everyday Energy: Smart Choices. Stronger Future.";
   const podcastText = "Listen to the Powering Tomorrow podcast: Everyday Energy: Smart Choices. Stronger Future.";
   const podcastUrl = window.location.href.split("#")[0];
+  const shareMessage = `${podcastText} ${podcastUrl}`;
   const encodedTitle = encodeURIComponent(podcastTitle);
   const encodedText = encodeURIComponent(podcastText);
   const encodedUrl = encodeURIComponent(podcastUrl);
@@ -101,9 +102,17 @@ function setupPodcastShare() {
       link.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
     }
 
-    if (platform === "tiktok" || platform === "instagram") {
+    if (platform === "facebook") {
+      link.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    }
+
+    if (platform === "email") {
+      link.href = `mailto:?subject=${encodedTitle}&body=${encodedText}%0A%0A${encodedUrl}`;
+    }
+
+    if (platform === "copy") {
       link.addEventListener("click", () => {
-        navigator.clipboard?.writeText(`${podcastText} ${podcastUrl}`).catch(() => {});
+        navigator.clipboard?.writeText(shareMessage).catch(() => {});
       });
     }
   });
