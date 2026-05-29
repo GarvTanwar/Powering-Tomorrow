@@ -3,25 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campaign Visual</title>
+  <title>PSA Visual</title>
   <link rel="icon" type="image/png" href="../assets/images/new_logo.png">
-  <link rel="stylesheet" href="../css/pages/image.css">
+  <link rel="stylesheet" href="../css/pages/image.css?v=9">
 </head>
 <body data-root="../">
   <div data-layout="header"></div>
-  <main class="info-page" id="main-content">
-    <p class="section-label">Campaign Visual</p>
-    <h1>Campaign Visual</h1>
-    <p>The campaign visual is made for parents to notice quickly and remember during normal home routines.</p>
-    <section class="info-panel">
-      <h2>PSA campaign image</h2>
-      <img class="info-image" src="../assets/images/psa_index_img.png" alt="A desk scene with a paper megaphone under a lamp, representing a family energy-saving campaign reminder">
-      <p>
-        Image description: a paper megaphone is displayed on a desk under a warm lamp, suggesting a public message or reminder. The dark green setting connects the visual to energy-saving habits at home.
-      </p>
-      <p>The visual encourages parents to guide children through small actions like switching off lights, unplugging chargers, and checking devices before leaving a room.</p>
+
+  <main class="psa-visual-page" id="main-content">
+    <section class="psa-hero page-reveal" aria-labelledby="psa-title">
+      <div class="psa-hero-inner">
+        <div class="psa-hero-badge" aria-hidden="true">
+          <img class="psa-hero-icon" src="../assets/images/megaphone.png" alt="">
+        </div>
+        <div class="psa-hero-copy">
+          <h1 class="psa-title-lockup" id="psa-title">
+            A Brighter <em>Future</em> Begins at <em>Home</em>
+          </h1>
+          <p>
+            Explore the PSA visual created to inspire families to save energy, reduce costs, and embrace sustainable living.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="psa-section page-reveal" aria-labelledby="our-psa-title">
+      <div class="psa-section-copy">
+        <h2 id="our-psa-title">Our PSA Visual</h2>
+      </div>
+
+      <div class="psa-visual-frame">
+        <img class="psa-main-image" src="../assets/images/psa_visual.jpg" alt="PSA visual showing a family energy-saving message connected to children, climate responsibility, and household savings">
+      </div>
+
+      <div class="psa-message-grid" aria-label="PSA visual message">
+        <article class="psa-message-card">
+          <span>01</span>
+          <h3>Parents lead the learning</h3>
+          <p>
+            The image shows parents as the biggest support in helping children understand energy-saving habits at home.
+          </p>
+        </article>
+        <article class="psa-message-card">
+          <span>02</span>
+          <h3>Small actions create real benefits</h3>
+          <p>
+            Saving energy can reduce household costs while also helping protect the climate and the wider world.
+          </p>
+        </article>
+        <article class="psa-message-card">
+          <span>03</span>
+          <h3>The future is in young hands</h3>
+          <p>
+            The jar in the child's hands suggests that children carry these habits forward and share responsibility for tomorrow.
+          </p>
+        </article>
+      </div>
     </section>
   </main>
+
   <div data-layout="footer"></div>
   <script src="../js/layout.js"></script>
   <script src="../js/script.js"></script>

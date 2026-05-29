@@ -340,7 +340,7 @@ function setupPodcastPlayer() {
 }
 
 function setupAboutPage() {
-  const revealItems = document.querySelectorAll(".about-reveal");
+  const revealItems = document.querySelectorAll(".about-reveal, .page-reveal");
   const valueButtons = document.querySelectorAll(".value-letter");
   const valueTitle = document.querySelector("#active-value-title");
   const valueCopy = document.querySelector("#active-value-copy");

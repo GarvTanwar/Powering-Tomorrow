@@ -37,7 +37,7 @@ function renderHeader() {
         <ul class="nav-links" id="nav-links">
           <li class="mobile-only-link"><a class="nav-home-link" href="${page("index.html")}">${navIcon("home")}<span>Home</span></a></li>
           <li><a href="${page("pages/podcast.html")}">${navIcon("podcast")}<span>Podcast</span></a></li>
-          <li><a href="${page("pages/image.html")}">${navIcon("psa")}<span>PSA Campaign</span></a></li>
+          <li><a href="${page("pages/image.html")}">${navIcon("psa")}<span>PSA Visual</span></a></li>
           <li><a href="${page("pages/infographic.html")}">${navIcon("info")}<span>Infographic</span></a></li>
           <li><a href="${page("pages/artefact.html")}">${navIcon("artefact")}<span>Physical Artefact</span></a></li>
           <li class="nav-dropdown">
@@ -71,7 +71,7 @@ function renderFooter() {
       <nav class="footer-column" aria-label="Footer navigation">
         <p class="footer-heading">Campaign</p>
         <a href="${page("pages/podcast.html")}">Podcast</a>
-        <a href="${page("pages/image.html")}">PSA Campaign</a>
+        <a href="${page("pages/image.html")}">PSA Visual</a>
         <a href="${page("pages/infographic.html")}">Infographic</a>
         <a href="${page("pages/artefact.html")}">Physical Artefact</a>
       </nav>

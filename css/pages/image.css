@@ -1,1 +1,284 @@
 @import url("../global.css");
+
+.psa-visual-page {
+  --psa-width: min(1180px, calc(100% - 32px));
+  width: 100%;
+  padding: 0 0 96px;
+  background: var(--paper);
+}
+
+.psa-hero {
+  min-height: 480px;
+  display: grid;
+  align-items: center;
+  color: var(--white);
+  background: #173f34;
+}
+
+.psa-hero-inner,
+.psa-section {
+  width: var(--psa-width);
+  margin: 0 auto;
+}
+
+.psa-hero-inner {
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(42px, 7vw, 96px);
+  padding: 64px 0;
+  animation: psaHeroIn 620ms ease both;
+}
+
+.psa-hero-badge {
+  flex: 0 0 auto;
+  width: clamp(170px, 22vw, 270px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.psa-hero-icon {
+  width: 72%;
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 24px 22px rgba(0, 0, 0, 0.24));
+  transition: filter 220ms ease, transform 220ms ease;
+}
+
+.psa-hero-badge:hover .psa-hero-icon {
+  filter: drop-shadow(0 30px 26px rgba(0, 0, 0, 0.28));
+  transform: rotate(-3deg) scale(1.04);
+}
+
+.psa-hero-copy {
+  flex: 1 1 660px;
+  max-width: 780px;
+  text-align: left;
+}
+
+.psa-title-lockup {
+  margin: 0;
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(3rem, 6.2vw, 5.85rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: left;
+}
+
+.psa-title-lockup em {
+  color: var(--yellow);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.psa-hero p {
+  max-width: 650px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(1rem, 1.7vw, 1.24rem);
+  line-height: 1.65;
+}
+
+@keyframes psaHeroIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.psa-section {
+  padding: 58px 0 0;
+}
+
+.psa-section-copy {
+  max-width: 860px;
+}
+
+.psa-section-copy h2 {
+  margin: 0;
+  color: var(--green-900);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.06;
+}
+
+.psa-visual-frame {
+  width: min(900px, 100%);
+  margin: 30px auto 0;
+  overflow: hidden;
+  background: transparent;
+  border-radius: 28px;
+}
+
+.psa-main-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(70vh, 720px);
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 28px;
+}
+
+.page-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.psa-message-grid {
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 34px auto 0;
+}
+
+.psa-message-card {
+  min-height: 220px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  padding: 24px;
+  background: var(--mint);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 14px 28px rgba(64, 48, 28, 0.07);
+}
+
+.psa-message-card:nth-child(2) {
+  background: var(--blue);
+}
+
+.psa-message-card:nth-child(3) {
+  background: #f9edcc;
+}
+
+.psa-message-card span {
+  color: var(--green-700);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3rem;
+  line-height: 0.9;
+}
+
+.psa-message-card h3 {
+  margin: 22px 0 0;
+  color: var(--green-900);
+  font-size: 1.28rem;
+  line-height: 1.18;
+}
+
+.psa-message-card p {
+  margin: 0;
+  margin-top: 14px;
+  color: #52645c;
+  font-size: 0.98rem;
+  line-height: 1.62;
+}
+
+@media (max-width: 760px) {
+  .psa-visual-page {
+    --psa-width: min(100% - 28px, 1180px);
+    padding-bottom: 76px;
+  }
+
+  .psa-hero {
+    min-height: 0;
+  }
+
+  .psa-hero-inner {
+    min-height: 0;
+    flex-direction: column;
+    gap: 18px;
+    padding: 34px 0 38px;
+  }
+
+  .psa-hero-copy,
+  .psa-title-lockup {
+    text-align: center;
+  }
+
+  .psa-hero-copy {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 34rem;
+  }
+
+  .psa-title-lockup {
+    font-size: clamp(2rem, 9vw, 2.65rem);
+    line-height: 1.04;
+    overflow-wrap: anywhere;
+  }
+
+  .psa-hero p {
+    max-width: 34rem;
+    margin-inline: auto;
+    margin-top: 16px;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .psa-hero-badge {
+    width: clamp(94px, 30vw, 136px);
+  }
+
+  .psa-section {
+    padding-top: 48px;
+  }
+
+  .psa-section-copy h2 {
+    font-size: clamp(2rem, 9vw, 2.45rem);
+    line-height: 1.08;
+  }
+
+  .psa-visual-frame {
+    margin-top: 28px;
+  }
+
+  .psa-message-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .psa-message-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .psa-message-card h3 {
+    margin-top: 16px;
+    font-size: 1.22rem;
+  }
+
+  .psa-message-card p {
+    font-size: 1rem;
+    line-height: 1.66;
+  }
+}
+
+@media (max-width: 540px) {
+  .psa-visual-page {
+    --psa-width: min(100% - 24px, 1180px);
+  }
+
+  .psa-title-lockup {
+    font-size: clamp(1.85rem, 10vw, 2.35rem);
+  }
+}

@@ -328,6 +328,17 @@
   line-height: 1.18;
 }
 
+.page-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (max-width: 980px) {
   .reason-grid,
   .infographic-age-grid {
@@ -348,11 +359,14 @@
   .infographic-hero-inner {
     min-height: 0;
     flex-direction: column;
-    gap: 24px;
-    padding: 48px 0 52px;
+    gap: 18px;
+    padding: 34px 0 38px;
   }
 
   .infographic-hero-copy {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 34rem;
     text-align: center;
   }
 
@@ -363,22 +377,23 @@
   .infographic-hero p:not(.section-label) {
     max-width: 34rem;
     margin-inline: auto;
-    font-size: 1rem;
-    line-height: 1.6;
+    margin-top: 16px;
+    font-size: 0.96rem;
+    line-height: 1.55;
   }
 
   .infographic-hero-badge {
-    width: clamp(132px, 42vw, 188px);
+    width: clamp(94px, 30vw, 136px);
   }
 
   .title-main {
-    font-size: clamp(2.65rem, 11vw, 3.35rem);
-    line-height: 0.96;
+    font-size: clamp(2rem, 9vw, 2.65rem);
+    line-height: 1.02;
     overflow-wrap: anywhere;
   }
 
   .title-sub {
-    font-size: clamp(1.9rem, 8vw, 2.35rem);
+    font-size: clamp(1.45rem, 6.8vw, 1.95rem);
     line-height: 1.05;
   }
 
@@ -428,11 +443,11 @@
   }
 
   .title-main {
-    font-size: clamp(2.2rem, 12vw, 2.8rem);
+    font-size: clamp(1.85rem, 10vw, 2.35rem);
   }
 
   .title-sub {
-    font-size: clamp(1.55rem, 8.8vw, 2rem);
+    font-size: clamp(1.32rem, 7.5vw, 1.72rem);
   }
 
   .infographic-age-grid {
