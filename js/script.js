@@ -25,20 +25,54 @@ function setupMenu() {
   const navLinks = document.querySelector("#nav-links");
   const dropdown = document.querySelector(".nav-dropdown");
   const dropdownToggle = document.querySelector(".nav-dropdown-toggle");
+  const menuTogglePlaceholder = document.createComment("menu toggle position");
+  const navLinksPlaceholder = document.createComment("nav links position");
+
+  menuToggle?.after(menuTogglePlaceholder);
+  navLinks?.after(navLinksPlaceholder);
 
   function closeDropdown() {
     dropdown?.classList.remove("is-open");
     dropdownToggle?.setAttribute("aria-expanded", "false");
   }
 
-  menuToggle?.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("is-open");
+  function moveMenuToOverlay() {
+    if (!menuToggle || !navLinks) return;
+
+    document.body.append(navLinks, menuToggle);
+    navLinks.scrollTop = 0;
+  }
+
+  function restoreMenuPosition() {
+    if (navLinksPlaceholder.parentNode && navLinks?.parentElement === document.body) {
+      navLinksPlaceholder.parentNode.insertBefore(navLinks, navLinksPlaceholder);
+    }
+
+    if (menuTogglePlaceholder.parentNode && menuToggle?.parentElement === document.body) {
+      menuTogglePlaceholder.parentNode.insertBefore(menuToggle, menuTogglePlaceholder);
+    }
+  }
+
+  function setMenuOpen(isOpen) {
+    if (!menuToggle || !navLinks) return;
+
+    if (isOpen) moveMenuToOverlay();
+
+    navLinks.classList.toggle("is-open", isOpen);
     menuToggle.classList.toggle("is-open", isOpen);
     menuToggle.setAttribute("aria-expanded", String(isOpen));
     menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     document.body.classList.toggle("menu-open", isOpen);
+    document.documentElement.classList.toggle("menu-open", isOpen);
 
-    if (!isOpen) closeDropdown();
+    if (!isOpen) {
+      closeDropdown();
+      restoreMenuPosition();
+    }
+  }
+
+  menuToggle?.addEventListener("click", () => {
+    setMenuOpen(!navLinks?.classList.contains("is-open"));
   });
 
   dropdownToggle?.addEventListener("click", (event) => {
@@ -48,14 +82,9 @@ function setupMenu() {
   });
 
   navLinks?.addEventListener("click", (event) => {
-    if (event.target.tagName !== "A") return;
+    if (!event.target.closest("a")) return;
 
-    navLinks.classList.remove("is-open");
-    menuToggle?.classList.remove("is-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-    menuToggle?.setAttribute("aria-label", "Open menu");
-    document.body.classList.remove("menu-open");
-    closeDropdown();
+    setMenuOpen(false);
   });
 
   document.addEventListener("keydown", (event) => {
@@ -64,11 +93,7 @@ function setupMenu() {
     closeDropdown();
 
     if (navLinks?.classList.contains("is-open")) {
-      navLinks.classList.remove("is-open");
-      menuToggle?.classList.remove("is-open");
-      menuToggle?.setAttribute("aria-expanded", "false");
-      menuToggle?.setAttribute("aria-label", "Open menu");
-      document.body.classList.remove("menu-open");
+      setMenuOpen(false);
     }
   });
 
@@ -187,6 +212,7 @@ function setupPodcastPlayer() {
   function setPlaybackSpeed(speed) {
     podcastAudio.playbackRate = speed;
     speedToggle?.setAttribute("aria-label", `Playback speed. Current speed ${speed}x`);
+    speedToggle?.setAttribute("data-speed-label", `${speed}x`);
 
     speedOptions.forEach((option) => {
       option.setAttribute("aria-checked", String(Number(option.dataset.speed) === speed));
@@ -465,6 +491,7 @@ podcastPlayButton?.addEventListener("click", () => {
   podcastPlayButton.setAttribute("hidden", "");
   podcastPlayButton.setAttribute("aria-expanded", "true");
   if (podcastPlayer && podcastAudio) {
+    document.body.classList.add("podcast-player-open");
     podcastPlayButton.closest(".podcast-play-area")?.classList.add("is-active");
     podcastPlayer.removeAttribute("hidden");
     podcastPlayer.querySelector(".player-toggle")?.focus();

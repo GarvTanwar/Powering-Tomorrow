@@ -324,6 +324,7 @@ a {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+html.menu-open,
 body.menu-open {
   overflow: hidden;
 }
@@ -2221,7 +2222,8 @@ button:focus-visible {
   }
 
   .site-header {
-    z-index: 100;
+    z-index: 150;
+    backdrop-filter: none;
   }
 
   .navbar {
@@ -2235,7 +2237,14 @@ button:focus-visible {
   .menu-toggle {
     display: inline-flex;
     position: relative;
-    z-index: 120;
+    z-index: 140;
+  }
+
+  body.menu-open .menu-toggle {
+    position: fixed;
+    top: 14px;
+    right: 18px;
+    z-index: 1000;
   }
 
   .navbar > .nav-contact-button {
@@ -2244,19 +2253,25 @@ button:focus-visible {
 
   .nav-links {
     position: fixed;
-    inset: 0;
-    z-index: 110;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 900;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
     width: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
     padding: 88px 24px 36px;
     overflow-y: auto;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     background:
       radial-gradient(circle at 88% 14%, rgba(245, 207, 101, 0.13), transparent 28%),
       linear-gradient(150deg, #2f675d 0%, #24574e 44%, #173f34 100%);
@@ -2324,7 +2339,7 @@ button:focus-visible {
 
   .mobile-contact-item {
     display: block;
-    margin-top: auto;
+    margin-top: 18px;
     margin-bottom: 0;
   }
 
@@ -2550,36 +2565,156 @@ button:focus-visible {
   }
 
   .podcast-player {
-    gap: 18px;
-    padding-bottom: 2px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    gap: 10px;
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(255, 253, 247, 0.98);
+    border-top: 1px solid rgba(36, 68, 56, 0.14);
+    box-shadow: 0 -12px 30px rgba(36, 68, 56, 0.16);
+    backdrop-filter: blur(10px);
   }
 
   .player-timeline {
     grid-template-columns: auto minmax(82px, 1fr) auto;
-    gap: 10px;
-  }
-
-  .player-controls-row {
-    grid-template-columns: 1fr auto;
-    gap: 14px;
-  }
-
-  .player-volume-group {
-    grid-column: 1 / -1;
-  }
-
-  .player-transport {
-    justify-self: start;
     gap: 8px;
   }
 
+  .player-current-time,
+  .player-duration {
+    font-size: 0.84rem;
+  }
+
+  .player-progress {
+    height: 24px;
+  }
+
+  .player-progress::-webkit-slider-thumb {
+    width: 9px;
+    height: 9px;
+    margin-top: -3px;
+  }
+
+  .player-progress::-moz-range-thumb {
+    width: 9px;
+    height: 9px;
+  }
+
+  .player-controls-row {
+    grid-template-columns: minmax(34px, 0.7fr) auto minmax(76px, 1fr);
+    gap: 10px;
+  }
+
+  .player-volume-group {
+    grid-column: auto;
+    order: 3;
+    justify-self: end;
+    gap: 4px;
+    min-width: 76px;
+  }
+
+  .player-transport {
+    order: 2;
+    justify-self: center;
+    gap: 7px;
+  }
+
+  .player-speed-control {
+    order: 1;
+    justify-self: start;
+  }
+
+  .player-button,
+  .player-speed-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .player-speed-toggle {
+    color: var(--green-900);
+    background: transparent;
+    border-radius: 4px;
+    font-size: 0;
+    font-weight: 900;
+  }
+
+  .player-speed-toggle::after {
+    content: attr(data-speed-label);
+    font-size: 0.86rem;
+    line-height: 1;
+  }
+
+  .player-speed-toggle .player-icon {
+    display: none;
+  }
+
+  .player-speed-menu {
+    left: 0;
+    right: auto;
+    bottom: calc(100% + 12px);
+    width: 78px;
+    padding: 4px;
+    background: var(--white);
+    border-color: rgba(36, 68, 56, 0.22);
+    box-shadow: 0 12px 24px rgba(36, 68, 56, 0.18);
+  }
+
+  .player-speed-option {
+    min-height: 30px;
+    padding: 5px 8px;
+    color: var(--green-900);
+    font-size: 0.8rem;
+  }
+
   .player-toggle {
-    width: 60px;
-    height: 60px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .player-play-icon,
+  .player-pause-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .player-skip .player-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .player-skip-value {
+    font-size: 0.52rem;
+  }
+
+  .player-volume .player-icon {
+    width: 22px;
+    height: 22px;
   }
 
   .player-volume-slider {
-    width: min(160px, calc(100vw - 140px));
+    display: block;
+    width: min(54px, 15vw);
+    height: 22px;
+    transform: none;
+  }
+
+  .player-volume-slider::-webkit-slider-thumb {
+    width: 9px;
+    height: 9px;
+    margin-top: -3px;
+  }
+
+  .player-volume-slider::-moz-range-thumb {
+    width: 9px;
+    height: 9px;
+  }
+
+  body.podcast-player-open {
+    padding-bottom: calc(116px + env(safe-area-inset-bottom));
   }
 
   .feature-section,
