@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
   <link rel="icon" type="image/png" href="../assets/images/new_logo.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="../css/pages/contact.css">
 </head>
 <body data-root="../">
@@ -62,24 +63,12 @@
         <h2 id="contact-details-title">Get in touch with Powering Tomorrow</h2>
       </div>
       <div class="contact-directory">
-        <section class="contact-faq-card" aria-labelledby="contact-faq-title">
-          <h3 id="contact-faq-title">FAQ</h3>
-          <details open>
-            <summary>Can I ask about the podcast?</summary>
-            <p>Yes. Send us questions about the episode, transcript, summary, or any part of the energy-saving message.</p>
-          </details>
-          <details>
-            <summary>How quickly will you reply?</summary>
-            <p>We usually respond within two business days.</p>
-          </details>
-          <details>
-            <summary>Can I ask about the PSA campaign?</summary>
-            <p>Yes. You can ask about the PSA image, infographic, physical artefact, or the message behind the campaign.</p>
-          </details>
-          <details>
-            <summary>Is this website for parents and kids?</summary>
-            <p>Yes. The content is made to help parents and their kids understand simple ways to save energy at home.</p>
-          </details>
+        <section class="contact-map-card" aria-labelledby="contact-map-title">
+          <div class="contact-map-copy">
+            <h3 id="contact-map-title">Find us in Melbourne</h3>
+            <p>Powering Tomorrow is based around Melbourne CBD.</p>
+          </div>
+          <div class="contact-map" id="contact-map" aria-label="Map showing Powering Tomorrow at 123 Green Street, Melbourne"></div>
         </section>
 
         <section class="contact-card">
@@ -109,5 +98,7 @@
   <div data-layout="footer"></div>
   <script src="../js/layout.js"></script>
   <script src="../js/script.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/contact-map.js"></script>
 </body>
 </html>
