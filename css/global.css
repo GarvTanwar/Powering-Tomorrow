@@ -597,6 +597,19 @@ h2 {
   font-weight: 900;
 }
 
+.ai-credit-line {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.page-bottom-credit {
+  width: min(1180px, calc(100% - 32px));
+  margin: 54px auto 0;
+  text-align: right;
+}
+
 .age-section {
   padding: 76px 0;
   border-bottom: 1px solid var(--line);
@@ -3028,5 +3041,14 @@ button:focus-visible {
   .visual-placeholder span {
     width: 100%;
     border-radius: 14px;
+  }
+
+  .ai-credit-line {
+    font-size: 0.86rem;
+  }
+
+  .page-bottom-credit {
+    width: min(100% - 24px, 1180px);
+    margin-top: 38px;
   }
 }

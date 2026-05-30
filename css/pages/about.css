@@ -431,19 +431,19 @@
 }
 
 .approach-card:nth-child(2) {
-  background: #2f5f4b;
+  background: #245240;
 }
 
 .approach-card:nth-child(3) {
-  background: #3f765d;
+  background: #306047;
 }
 
 .approach-card:nth-child(4) {
-  background: #3f765d;
+  background: #3c6e50;
 }
 
 .approach-card:nth-child(5) {
-  background: #163f36;
+  background: #497b5b;
 }
 
 .approach-card span {
@@ -565,6 +565,16 @@
   transform: scale(1.02);
 }
 
+.photo-slot .team-photo-piotr {
+  object-position: center center;
+  transform: scale(1);
+}
+
+.photo-slot .team-photo-jock {
+  object-position: center top;
+  transform: scale(1.02);
+}
+
 .team-face h3 {
   margin: 0;
   color: var(--green-900);
@@ -605,6 +615,11 @@
   font-style: italic;
   font-weight: 500;
   line-height: 1.32;
+}
+
+.team-back .team-quote-long {
+  font-size: clamp(1.05rem, 1.35vw, 1.32rem);
+  line-height: 1.38;
 }
 
 @media (max-width: 1120px) {
