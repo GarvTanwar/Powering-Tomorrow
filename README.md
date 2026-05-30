@@ -1,138 +1,179 @@
 # Powering Tomorrow PSA Website
 
-This project is a public service announcement website about teaching children energy-saving habits at home. The website is made for parents, carers, and home owners. It explains simple ways families can reduce wasted energy through everyday routines like switching off lights, unplugging chargers, and checking devices.
+Powering Tomorrow is a public service announcement website that helps families build simple energy-saving habits at home. It is designed for parents, carers, home owners, and children, with resources about climate awareness, sustainable living, energy bills, future technology, quizzes, DIY activities, a podcast, a PSA visual, and campaign artefacts.
 
-## How to View the Website
+## How to View Locally
 
-You do not need to know coding to view the website.
+No build step is required. This is a static HTML, CSS, and JavaScript website.
 
-1. Download or open the project folder.
-2. Find the file called `index.html`.
-3. Double-click `index.html`.
-4. The website will open in your web browser.
+1. Open the project folder.
+2. Double-click `index.html`.
+3. The website will open in a browser.
 
-The `index.html` file is the homepage. From there, you can click the navigation links to visit the other pages.
+If testing through a local server, open the project root and serve the folder. The homepage is `index.html`.
 
-## File Structure
+## GitHub Pages
 
-The project is organised like this:
+This project can be published with GitHub Pages.
+
+1. Push the project to GitHub.
+2. Open the repository on GitHub.
+3. Go to **Settings**.
+4. Open **Pages**.
+5. Under **Build and deployment**, choose **Deploy from a branch**.
+6. Select the main branch and the root folder.
+7. Save.
+
+The live site will use GitHub's default format:
 
 ```text
-Assignment4_PSA/
+https://YOUR-GITHUB-USERNAME.github.io/REPOSITORY-NAME/
+```
+
+If the repository is renamed to `powering-tomorrow`, the URL will be:
+
+```text
+https://YOUR-GITHUB-USERNAME.github.io/powering-tomorrow/
+```
+
+## Project Structure
+
+```text
+PSA_Website/
 |-- index.html
+|-- 404.html
 |-- README.md
 |-- assets/
-|   `-- images/
+|   |-- audio/
+|   |-- images/
+|   |-- infographics/
+|   `-- transcript/
 |-- css/
-|   `-- style.css
+|   |-- global.css
+|   |-- style.css
+|   `-- pages/
 |-- js/
-|   `-- script.js
+|   |-- layout.js
+|   |-- script.js
+|   |-- quiz.js
+|   `-- page-specific scripts
 `-- pages/
     |-- about.html
+    |-- accessibility.html
     |-- artefact.html
+    |-- certificate.html
     |-- climate-change.html
     |-- contact.html
+    |-- copyright-usage.html
+    |-- diy-energy-lab.html
+    |-- diy-solar-oven.html
     |-- faq.html
+    |-- future-technology.html
     |-- image.html
-    |-- impacts.html
     |-- infographic.html
     |-- kids-6-7.html
     |-- kids-9-10.html
     |-- kids-12-13.html
     |-- kids-15-16.html
+    |-- macgyver-windmill.html
+    |-- our-mascot.html
     |-- podcast.html
+    |-- podcast-summary.html
+    |-- podcast-transcript.html
+    |-- quiz.html
     |-- references.html
-    |-- solutions.html
-    `-- take-action.html
+    |-- reusable-lunch-bag.html
+    |-- sustainable-living.html
+    |-- take-action.html
+    |-- terms-of-use.html
+    `-- understanding-energy-bill.html
 ```
 
-`index.html` stays in the main folder because it is the file everyone should open first. The other website pages are inside the `pages` folder. Styling is inside the `css` folder, JavaScript is inside the `js` folder, and future images or media can go inside `assets/images`.
-
-## What Each Page Has
+## Main Pages
 
 ### `index.html`
 
-This is the main homepage of the website. It introduces the campaign, explains the main message, and links to the podcast, PSA campaign visual, infographic, physical artefact, and age-based family energy habit sections.
+The homepage introduces the campaign, links to the podcast and PSA visual, shows age-group pathways, introduces Kidz Zone, and summarises the campaign idea.
 
 ### `pages/podcast.html`
 
-This page is for the campaign podcast. It explains that the podcast is under 5 minutes, includes a parent interviewee, and uses background music. There is currently a placeholder where the final podcast audio or video can be added.
+The podcast page includes the episode **Everyday Energy: Smart Choices. Stronger Future.**, an audio player, sharing options, transcript link, summary link, and download link.
 
 ### `pages/image.html`
 
-This page is for the PSA campaign visual. It explains the purpose of the image and what message it should show, such as parents reminding children to switch off lights, unplug chargers, and check devices.
+The PSA visual page presents the main campaign image and explains three key messages: parents lead the learning, small actions create real benefits, and children carry habits into the future.
 
 ### `pages/infographic.html`
 
-This page is for the infographic. It includes simple household energy facts that parents can explain to children. There is currently a placeholder where the final infographic image can be added.
+This page links to age-based infographic resources for children.
 
 ### `pages/artefact.html`
 
-This page is for the physical artefact. It explains that the artefact could be a fridge reminder card, poster, display board, or sticker set. There is currently a placeholder where a photo of the final physical artefact can be added.
+The artefact page presents campaign take-home materials, including parent reminders such as a keychain and fridge magnet, plus Captain Wattson stickers for children.
 
-### `pages/kids-6-7.html`
+### `pages/our-mascot.html`
 
-This page is only for ages 6-8. It explains basic habits like turning off lights, closing doors, and learning through simple parent reminders.
+This page introduces Captain Wattson, the campaign mascot, and explains his energy-saving messages for children and families.
 
-### `pages/kids-9-10.html`
+### `pages/quiz.html`
 
-This page is only for ages 9-10. It focuses on building routine through checking switches, unplugging chargers, and helping before bedtime or leaving home.
+Captain Wattson's Energy Quiz lets users choose an age group, answer 10 climate and energy questions, review explanations, and generate a certificate.
 
-### `pages/kids-12-13.html`
+### `pages/diy-energy-lab.html`
 
-This page is only for ages 11-13. It explains how pre-teens can understand energy waste, power bills, and shared family responsibility.
+The DIY Energy Lab links to hands-on activities: DIY Solar Oven, MacGyver Windmill, and Reusable Lunch Bag.
 
-### `pages/kids-15-16.html`
-
-This page is only for ages 14-15. It explains how teenagers can manage their own devices and lead by example for younger siblings.
+## Learn Pages
 
 ### `pages/climate-change.html`
 
-This page explains why energy habits matter at home. It focuses on how children learn from family routines and why parents should treat electricity as something valuable.
+Explains how household energy use connects to climate change and how parents can teach children calmly through everyday routines.
 
-### `pages/impacts.html`
+### `pages/sustainable-living.html`
 
-This page explains how wasted energy affects the future. It shows that small actions, such as leaving lights or chargers on, can create long-term habits.
+Explains sustainable living through simple family habits such as switching off, reusing, repairing, sharing, and reducing waste.
 
-### `pages/solutions.html`
+### `pages/understanding-energy-bill.html`
 
-This page explains daily habits families can adopt. It includes actions like switching off unused lights, charging devices only when needed, using natural light, and setting family routines.
+Explains billing periods, total usage, supply charges, usage charges, kilowatt-hours, and how families can use bills as a learning activity.
 
-### `pages/take-action.html`
+### `pages/future-technology.html`
 
-This page gives a practical action checklist for parents. It lists simple habits parents can teach children, such as turning off lights, unplugging chargers, using natural light, and turning off screens before bedtime.
+Explains smart meters, efficient appliances, timers, sensors, home energy apps, solar panels, home batteries, and responsible technology habits.
 
-### `pages/about.html`
+## Age Group Pages
 
-This page explains the purpose of the campaign and who it is for. It describes the campaign as a practical guide for parents, carers, and families.
+- `pages/kids-6-7.html` shows the 6-8 years infographic.
+- `pages/kids-9-10.html` shows the 9-10 years infographic.
+- `pages/kids-12-13.html` shows the 11-13 years infographic.
+- `pages/kids-15-16.html` shows the 14-15 years infographic.
 
-### `pages/faq.html`
+## Support and Policy Pages
 
-This page answers common questions about the campaign. It explains who the campaign is for, what age children can start learning energy-saving habits, and the main message of the project.
+- `pages/about.html` explains the campaign mission, story, values, approach, and team.
+- `pages/faq.html` includes 25 frequently asked questions based on the completed website content.
+- `pages/contact.html` provides the contact form and contact page experience.
+- `pages/references.html` lists project references and sources, including sources for the Learn pages.
+- `pages/terms-of-use.html`, `pages/privacy-policy.html`, `pages/accessibility.html`, and `pages/copyright-usage.html` provide supporting policy information.
 
-### `pages/contact.html`
+## Image Attribution Notes
 
-This page has placeholder contact details for the campaign. These details can be changed later if the group wants to add real contact information.
+Some campaign visuals and activity images include plain attribution lines on the relevant pages. The attribution states that images were generated with the help of ChatGPT.
 
-### `pages/references.html`
+## Development Notes
 
-This page lists the sources used for the project. It is included for transparency and marking.
+- Shared header and footer markup is generated by `js/layout.js`.
+- Shared styling is in `css/global.css`.
+- Page-specific styles are in `css/pages/`.
+- General interactions are handled by `js/script.js`.
+- Quiz data and quiz logic are in `js/quiz.js`.
 
-## Other Project Files
+## Editing Guide
 
-### `css/style.css`
+To edit page text, open the matching `.html` file in `pages/`.
 
-This file controls how the website looks. It includes the colours, layout, spacing, buttons, cards, mobile design, and general page styling.
+To edit shared navigation or footer links, update `js/layout.js`.
 
-### `js/script.js`
+To edit site-wide colours, typography, spacing, and shared components, update `css/global.css`.
 
-This file controls small interactive features on the website, such as the mobile menu and carousel-style scrolling buttons.
-
-## Notes for Group Members
-
-If you only want to look at the website, open `index.html`.
-
-If you want to edit the words on a page, open the matching `.html` file in the `pages` folder. For example, edit `pages/podcast.html` to change the podcast page, or edit `pages/references.html` to change the references page.
-
-If you want to change colours or layout, that is mostly done in `css/style.css`.
-
+To edit a specific page layout, update the matching CSS file in `css/pages/`.
