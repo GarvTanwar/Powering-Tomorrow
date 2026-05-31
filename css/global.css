@@ -597,17 +597,14 @@ h2 {
   font-weight: 900;
 }
 
-.ai-credit-line {
-  margin: 8px 0 0;
+.ai-image-attribution {
+  margin: 6px 0 0;
   color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.page-bottom-credit {
-  width: min(1180px, calc(100% - 32px));
-  margin: 54px auto 0;
-  text-align: right;
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.35;
+  text-align: center;
+  opacity: 0.8;
 }
 
 .age-section {
@@ -3043,12 +3040,7 @@ button:focus-visible {
     border-radius: 14px;
   }
 
-  .ai-credit-line {
-    font-size: 0.86rem;
-  }
-
-  .page-bottom-credit {
-    width: min(100% - 24px, 1180px);
-    margin-top: 38px;
+  .ai-image-attribution {
+    font-size: 0.75rem;
   }
 }

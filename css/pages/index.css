@@ -126,23 +126,9 @@
   transform: none;
 }
 
-.feature-media-stack {
-  display: grid;
-  gap: 8px;
-  align-self: center;
-}
-
-.feature-media-stack .ai-credit-line {
-  margin: 0;
-}
-
 @media (max-width: 820px) {
-  .feature-media-stack {
-    order: 1;
-  }
-
   .visual-feature .psa-visual-teaser {
-    order: initial;
+    order: 1;
   }
 
   .visual-feature .feature-copy {
