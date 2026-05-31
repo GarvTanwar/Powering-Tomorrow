@@ -597,16 +597,6 @@ h2 {
   font-weight: 900;
 }
 
-.ai-image-attribution {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-style: italic;
-  line-height: 1.35;
-  text-align: center;
-  opacity: 0.8;
-}
-
 .age-section {
   padding: 76px 0;
   border-bottom: 1px solid var(--line);
@@ -3040,7 +3030,4 @@ button:focus-visible {
     border-radius: 14px;
   }
 
-  .ai-image-attribution {
-    font-size: 0.75rem;
-  }
 }
